@@ -11,7 +11,6 @@ const UpdateArticle = () => {
     title: "",
     information: "",
     tags: "",
-    image: "",
   });
 
   const router = useRouter();
@@ -29,7 +28,6 @@ const UpdateArticle = () => {
         title: data.title,
         information: data.information,
         tags: data.tags,
-        image: data?.image,
       });
     };
 
@@ -49,7 +47,6 @@ const UpdateArticle = () => {
           title: book.title,
           information: book.information,
           tags: book.tags,
-          image: book.image,
         }),
       });
 
