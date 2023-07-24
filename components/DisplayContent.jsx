@@ -1,12 +1,25 @@
-import React from "react";
+"use client"
+
+import React, { useEffect, useState } from "react";
 
 const DisplayContent = ({ htmlContent }) => {
+
+  const [_document, set_Document] = useState(false)
+
+  useEffect(() => {
+    set_Document(true)
+  },[])
+
   return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html:  htmlContent,
-      }}
-    />
+    <>
+      {_document && (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: htmlContent,
+          }}
+        />
+      )}
+    </>
   );
 };
 
