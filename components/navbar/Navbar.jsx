@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <section className="w-full">
-      <div className="flex justify-between items-center h-[80px] w-[90%] mx-auto">
+      <div className="flex justify-between items-center h-[80px] w-[90%] bg-ye mx-auto">
         <Link href={"/"} className="font-bold tracking-widest text-lg">
           C-Tech
         </Link>
@@ -74,7 +74,7 @@ const Navbar = () => {
           <div className="block md:hidden">
             <Link
               type="button"
-              className="px-3.5 mt-3 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
+              className="px-3.5 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
               href="/dashboard/login"
               onClick={() => setToggleMenu((prev) => !prev)}
             >

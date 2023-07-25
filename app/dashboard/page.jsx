@@ -28,11 +28,7 @@ const MyArticles = () => {
     };
 
     if (session?.user.id) fetchBlogs();
-  }, [session?.user.id]);
-
-  // if (!session?.user) {
-  //   return router?.push("/dashboard/login");
-  // }
+  }, [session?.user.id]); 
 
   const handleEdit = async (blog) => {
     router.push(`/dashboard/update?id=${blog._id}`);
