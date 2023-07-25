@@ -76,7 +76,6 @@ const Navbar = () => {
               type="button"
               className="px-3.5 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
               href="/dashboard/login"
-              onClick={() => setToggleMenu((prev) => !prev)}
             >
               Sign In
             </Link>
