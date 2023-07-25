@@ -33,6 +33,8 @@ const OneNovel = () => {
     fetchBooks();
   }, [id, key]);
 
+ 
+
   const thumbnail = selectedNovel?.volumeInfo.imageLinks.smallThumbnail;
 
   const sanitizedContent = DOMPurify.sanitize(

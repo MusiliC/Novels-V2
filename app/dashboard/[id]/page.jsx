@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogCardList from "@/components/AllBlogs";
 import { useSearchParams, useParams } from "next/navigation";
+import AllBlogs from "@/components/AllBlogs";
+import BlogCardList from "@/components/BlogCardList";
 
 const UserArticles = () => {
   const [blogs, setBlogs] = useState([]);
@@ -26,6 +27,8 @@ const UserArticles = () => {
     };
     if (id) fetchBlogs();
   }, [id]);
+
+  console.log(blogs);
 
   return (
     <section className="w-full pt-5 md:min-h-[70vh] pb-16">

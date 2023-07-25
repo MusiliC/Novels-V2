@@ -1,15 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogCard from "./BlogCard";
 import Search from "./search/Search";
+import BlogCardList from "./BlogCardList";
 
-const BlogCardList = ({ data}) => (
-  <div className="lg:w-4/6 w-5/6 mx-auto flex  flex-col">
-    {data && data.map((blog, i) => (
-      <BlogCard key={i} blog={blog} />
-    ))}
-  </div>
-);
+
 
 const AllBlogs = () => {
   const [searchText, setSearchText] = useState("");
