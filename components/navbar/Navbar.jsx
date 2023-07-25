@@ -51,7 +51,10 @@ const Navbar = () => {
         </Link>
 
         {session?.user && (
-          <div className=" h-[45px] rounded-full w-[45px] p-1">
+          <Link
+            href={"/dashboard"}
+            className=" h-[45px] rounded-full w-[45px] p-1"
+          >
             {session.user.image ? (
               <Image
                 src={session.user.image}
@@ -65,6 +68,18 @@ const Navbar = () => {
                 <p className="font-semibold md:text-lg">{userProfile}</p>
               </div>
             )}
+          </Link>
+        )}
+        {session?.user ? null : (
+          <div className="block md:hidden">
+            <Link
+              type="button"
+              className="px-3.5 mt-3 cursor-pointer border-none py-2 hover:bg-primary-100 outline hover:outline-none outline-1 hover:text-gray-100 rounded-2xl"
+              href="/dashboard/login"
+              onClick={() => setToggleMenu((prev) => !prev)}
+            >
+              Sign In
+            </Link>
           </div>
         )}
 

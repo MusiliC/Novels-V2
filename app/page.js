@@ -20,12 +20,12 @@ export default function Home() {
             Learn Without <br /> Limits and spread Knowledge
           </h1>
           <h2 className="text-sm md:text-lg text-justify">
-            The beauty of blogs is that you can get key points of a book
-            distilled down into easily digestible information. Find a book
-            summary, so you can quickly glean knowledge.
+             Your ultimate destination for novel reviews. Explore
+            a diverse library of books, share your thoughts, and connect with
+            fellow book enthusiasts on this vibrant platform.
           </h2>
           <div>
-            <Button text={"Get Started"} url={"/blogs"} />
+            <Button text={"Read Blogs"} url={"/blogs"} />
           </div>
         </div>
       </div>

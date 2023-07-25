@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogCardList from "@/components/BlogCardList";
+import BlogCardList from "@/components/AllBlogs";
 import { useSearchParams, useParams } from "next/navigation";
 
 const UserArticles = () => {

@@ -29,7 +29,7 @@ const MyBlogs = ({ data, handleDelete, handleEdit }) => {
                 alt="novel image"
               />
             </div>
-            <div className="w-[90%] mx-auto flex-1 flex flex-col justify-between gap-2  py-2">
+            <div className="w-[90%] mx-auto flex-1 flex flex-col justify-between  gap-2  py-2">
               <p className="mb-2 font-semibold tracking-wider text-sm ">
                 {novel.title}
               </p>
