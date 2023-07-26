@@ -41,7 +41,7 @@ const AllBlogs = () => {
     const fetchBlogs = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch("/api/blogs");
+        const res = await fetch("/api/blogs", { next: { revalidate: 5 } });
         const data = await res.json();
         setBlogs(data);
       } catch (error) {
@@ -52,7 +52,7 @@ const AllBlogs = () => {
     fetchBlogs();
   }, []);
 
-  console.log(blogs);
+
 
   return (
     <>
