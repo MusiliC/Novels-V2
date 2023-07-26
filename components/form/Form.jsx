@@ -12,8 +12,9 @@ const Form = ({ type, book, setBook, submitting, handleSubmit }) => {
     <form
       action=""
       onSubmit={handleSubmit}
-      className="flex w-full flex-col gap-4"
+      className="flex w-full flex-col gap-3"
     >
+      <label>Book Title</label>
       <input
         type="text"
         placeholder="Book title"
@@ -26,6 +27,7 @@ const Form = ({ type, book, setBook, submitting, handleSubmit }) => {
       </label>
       <TextEditor value={book.information} onChange={handleEditorChange} />
 
+      <label>Book Tags (#success, #growth)</label>
       <input
         type="text"
         onChange={(e) => setBook({ ...book, tags: e.target.value })}

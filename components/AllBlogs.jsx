@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import Search from "./search/Search";
 import BlogCardList from "./BlogCardList";
 
-
-
 const AllBlogs = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
@@ -53,6 +51,8 @@ const AllBlogs = () => {
     };
     fetchBlogs();
   }, []);
+
+  console.log(blogs);
 
   return (
     <>
