@@ -35,7 +35,7 @@ const NewArticle = () => {
       });
 
       if (response.ok) {
-        router.push("/dashboard");
+        router.push("/blogs");
       }
     } catch (error) {
       console.log(error);
