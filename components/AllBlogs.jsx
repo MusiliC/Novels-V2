@@ -41,7 +41,7 @@ const AllBlogs = () => {
     const fetchBlogs = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch("/api/blogs");
+        const res = await fetch("/api/blogs", { cache: "no-store" });
         const data = await res.json();
         setBlogs(data);
       } catch (error) {
