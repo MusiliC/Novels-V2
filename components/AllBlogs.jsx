@@ -1,13 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import useSWR from "swr";
 import Search from "./search/Search";
 import BlogCardList from "./BlogCardList";
+
+const fetcher = async (url) => {
+  const res = await fetch(url, { cache: "no-store" });
+  const data = await res.json();
+  return data;
+};
 
 const AllBlogs = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
-  const [blogs, setBlogs] = useState([]);
+  // const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   // //filter prompts
@@ -37,29 +44,23 @@ const AllBlogs = () => {
     );
   };
 
-  const fetchBlogs = async () => {
-    setIsLoading(true);
-    try {
-      const res = await fetch("/api/blogs", { cache: "no-store" });
-      const data = await res.json();
-      setBlogs(data);
-    } catch (error) {
-      console.log(error);
-    }
-    setIsLoading(false);
-  };
+  // Use SWR to fetch blogs data
+  const { data: blogs, error } = useSWR("/api/blogs", fetcher);
 
-  useEffect(() => {
-    // Fetch initial data during component mount (SSG)
-    fetchBlogs();
-
-    // Poll for data updates every 5 minutes (adjust the interval as needed)
-    const pollInterval = 1 * 60 * 1000; // 1 minutes in milliseconds
-    const pollingTimer = setInterval(fetchBlogs, pollInterval);
-
-    // Clear the interval when the component is unmounted
-    return () => clearInterval(pollingTimer);
-  }, []);
+  // useEffect(() => {
+  //   const fetchBlogs = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await fetch("/api/blogs", { cache: "no-store" });
+  //       const data = await res.json();
+  //       setBlogs(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //     setIsLoading(false);
+  //   };
+  //   fetchBlogs();
+  // }, []);
 
   return (
     <>
