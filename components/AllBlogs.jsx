@@ -50,7 +50,7 @@ const AllBlogs = () => {
       setIsLoading(false);
     };
     fetchBlogs();
-  }, []);
+  }, [blogs]);
 
   return (
     <>
