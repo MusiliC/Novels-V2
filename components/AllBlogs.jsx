@@ -1,20 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import useSWR from "swr";
 import Search from "./search/Search";
 import BlogCardList from "./BlogCardList";
-
-const fetcher = async (url) => {
-  const res = await fetch(url, { cache: "no-store" });
-  const data = await res.json();
-  return data;
-};
 
 const AllBlogs = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
-  // const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   // //filter prompts
@@ -44,23 +37,20 @@ const AllBlogs = () => {
     );
   };
 
-  // Use SWR to fetch blogs data
-  const { data: blogs, error } = useSWR("/api/blogs", fetcher);
-
-  // useEffect(() => {
-  //   const fetchBlogs = async () => {
-  //     setIsLoading(true);
-  //     try {
-  //       const res = await fetch("/api/blogs", { cache: "no-store" });
-  //       const data = await res.json();
-  //       setBlogs(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //     setIsLoading(false);
-  //   };
-  //   fetchBlogs();
-  // }, []);
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      setIsLoading(true);
+      try {
+        const res = await fetch("/api/blogs", { cache: "no-store" });
+        const data = await res.json();
+        setBlogs(data);
+      } catch (error) {
+        console.log(error);
+      }
+      setIsLoading(false);
+    };
+    fetchBlogs();
+  }, []);
 
   return (
     <>
