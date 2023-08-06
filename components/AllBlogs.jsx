@@ -40,8 +40,10 @@ const AllBlogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       setIsLoading(true);
+
       try {
-        const res = await fetch("/api/blogs", { cache: "no-store" });
+        const { signal } = new AbortController();
+        const res = await fetch("/api/blogs", { cache: "no-store", signal });
         const data = await res.json();
         setBlogs(data);
       } catch (error) {
