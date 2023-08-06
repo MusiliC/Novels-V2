@@ -37,20 +37,29 @@ const AllBlogs = () => {
     );
   };
 
+  const fetchBlogs = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/blogs", { cache: "no-store" });
+      const data = await res.json();
+      setBlogs(data);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    const fetchBlogs = async () => {
-      setIsLoading(true);
-      try {
-        const res = await fetch("/api/blogs", { cache: "no-store" });
-        const data = await res.json();
-        setBlogs(data);
-      } catch (error) {
-        console.log(error);
-      }
-      setIsLoading(false);
-    };
+    // Fetch initial data during component mount (SSG)
     fetchBlogs();
-  }, [blogs]);
+
+    // Poll for data updates every 5 minutes (adjust the interval as needed)
+    const pollInterval = 1 * 60 * 1000; // 1 minutes in milliseconds
+    const pollingTimer = setInterval(fetchBlogs, pollInterval);
+
+    // Clear the interval when the component is unmounted
+    return () => clearInterval(pollingTimer);
+  }, []);
 
   return (
     <>
