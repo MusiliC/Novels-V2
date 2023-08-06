@@ -42,8 +42,7 @@ const AllBlogs = () => {
       setIsLoading(true);
 
       try {
-        const { signal } = new AbortController();
-        const res = await fetch("/api/blogs", { cache: "no-store", signal });
+        const res = await fetch("/api/blogs");
         const data = await res.json();
         setBlogs(data);
       } catch (error) {
